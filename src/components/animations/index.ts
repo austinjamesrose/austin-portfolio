@@ -5,3 +5,4 @@ export { Sparkle } from "./Sparkle";
 export { MagneticButton } from "./MagneticButton";
 export { ParticleBackground } from "./ParticleBackground";
 export { DataVizPattern } from "./DataVizPattern";
+export { SkillsRadar } from "./SkillsRadar";

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/layout";
+import { SkillsRadar } from "@/components/animations";
 
 export const metadata: Metadata = {
   title: "About",
@@ -52,6 +53,22 @@ export default function AboutPage() {
           <h2 className="font-display text-[2rem] md:text-[2.5rem] leading-[1.2] text-text-primary mb-16">
             Skills & Tools
           </h2>
+
+          {/* Skills Radar - Visual Summary */}
+          <div className="flex justify-center mb-16">
+            <SkillsRadar
+              size={340}
+              skills={[
+                { name: "Workday", level: 95, color: "var(--accent-primary)" },
+                { name: "SQL", level: 85, color: "var(--accent-primary)" },
+                { name: "Tableau", level: 80, color: "var(--accent-primary)" },
+                { name: "Python", level: 65, color: "var(--accent-tertiary)" },
+                { name: "BigQuery", level: 70, color: "var(--accent-tertiary)" },
+                { name: "Excel", level: 90, color: "var(--accent-primary)" },
+              ]}
+            />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {/* Data & Analytics */}
             <div className="bg-bg-secondary rounded-2xl p-8 border-l-4 border-l-accent-coral">
