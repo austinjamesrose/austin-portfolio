@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout";
 
 export const metadata: Metadata = {
@@ -16,16 +17,27 @@ export default function AboutPage() {
           <h1 className="font-display text-[3rem] md:text-[4rem] leading-[1.1] text-text-primary mb-12">
             About Me
           </h1>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Headshot */}
+            <div className="lg:col-span-4 flex justify-center lg:justify-start">
+              <Image
+                src="/images/headshot.jpg"
+                alt="Austin Rose"
+                width={280}
+                height={280}
+                className="rounded-full border-4 border-bg-tertiary shadow-xl"
+                priority
+              />
+            </div>
+
+            {/* Narrative */}
+            <div className="lg:col-span-8 space-y-6">
               <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
                 My career tells a story of natural analytical curiosity evolving into People Analytics leadership. Starting in recruiting and business development roles, I was always the person asking &apos;what does the data say?&apos;—tracking conversion rates, analyzing reply rates to outreach, and looking for ways to optimize processes.
               </p>
               <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
                 That curiosity led to increasingly data-focused recruiting roles at companies like Chime, where I scaled a Data Analytics team from 16 to 59 analysts while using funnel data to improve hiring processes. The transition to a dedicated People Analytics role at The Aspen Group was a natural next step—finally getting to focus entirely on the analytical work I&apos;d been drawn to all along.
               </p>
-            </div>
-            <div>
               <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
                 Now, with three years leading People Analytics for a 23,000+ employee organization, I&apos;m ready to go deeper technically. I&apos;m not looking to abandon the strategic partnership and business impact—I want to pair it with more sophisticated analytical methods and stronger technical fundamentals.
               </p>

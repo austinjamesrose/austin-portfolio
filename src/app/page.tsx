@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/layout";
 
 export default function HomePage() {
@@ -134,6 +135,16 @@ export default function HomePage() {
       <section className="py-32 bg-bg-secondary">
         <Container>
           <div className="max-w-4xl mx-auto text-center">
+            {/* Headshot */}
+            <div className="mb-8">
+              <Image
+                src="/images/headshot.jpg"
+                alt="Austin Rose"
+                width={144}
+                height={144}
+                className="rounded-full border-2 border-bg-tertiary mx-auto shadow-lg"
+              />
+            </div>
             <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-[1.2] text-text-primary mb-8">
               About Me
             </h2>
