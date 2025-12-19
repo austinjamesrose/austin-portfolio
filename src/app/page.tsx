@@ -1,65 +1,180 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Container } from "@/components/layout";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      {/* Hero Section */}
+      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+        <Container className="text-center">
+          <div className="max-w-2xl mx-auto">
+            {/* Decorative icon */}
+            <div className="text-accent-coral text-3xl mb-6">&#10022;</div>
+
+            {/* Name */}
+            <h1 className="font-display text-[4rem] leading-[1.1] text-text-primary mb-4">
+              Austin Rose
+            </h1>
+
+            {/* Title */}
+            <p className="text-text-secondary text-xl mb-6">
+              Head of People Analytics
+            </p>
+
+            {/* Value prop */}
+            <p className="text-text-secondary mb-8 max-w-lg mx-auto text-lg">
+              I transform workforce data into strategic decisions that drive
+              business outcomes.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex gap-4 justify-center">
+              <Link
+                href="/work"
+                className="bg-accent-coral text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-all duration-[var(--transition-base)]"
+              >
+                View My Work
+              </Link>
+              <Link
+                href="/contact"
+                className="border border-text-tertiary text-text-primary px-6 py-3 rounded-lg font-medium hover:border-accent-coral hover:text-accent-coral transition-all duration-[var(--transition-base)]"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Impact Metrics Section */}
+      <section className="py-32 bg-bg-secondary">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div>
+              <p className="font-display text-[4rem] leading-[1.1] text-accent-coral">
+                $55M
+              </p>
+              <p className="text-text-secondary text-sm mt-2">
+                incremental revenue delivered
+              </p>
+            </div>
+            <div>
+              <p className="font-display text-[4rem] leading-[1.1] text-text-primary">
+                23K+
+              </p>
+              <p className="text-text-secondary text-sm mt-2">
+                employees supported
+              </p>
+            </div>
+            <div>
+              <p className="font-display text-[4rem] leading-[1.1] text-text-primary">
+                950+
+              </p>
+              <p className="text-text-secondary text-sm mt-2">
+                custom Workday reports built
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Featured Work Preview */}
+      <section className="py-32">
+        <Container>
+          <h2 className="font-display text-[2.5rem] leading-[1.2] text-text-primary text-center mb-16">
+            Featured Work
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Project Card 1 */}
+            <div className="bg-bg-secondary border border-border-subtle rounded-xl p-6 hover:border-accent-coral/30 hover:-translate-y-1 transition-all duration-300">
+              <span className="text-accent-teal text-xs font-medium uppercase tracking-wider">
+                Executive Reporting
+              </span>
+              <h3 className="font-display text-[1.25rem] leading-[1.4] text-text-primary mt-3 mb-2">
+                People Analytics Dashboard
+              </h3>
+              <p className="text-text-secondary text-sm mb-4">
+                Enterprise Tableau dashboard tracking retention, headcount, and
+                talent acquisition metrics across 20+ business units.
+              </p>
+              <p className="text-accent-coral text-sm">
+                Impact: 40% reduction in report generation time
+              </p>
+            </div>
+
+            {/* Project Card 2 */}
+            <div className="bg-bg-secondary border border-border-subtle rounded-xl p-6 hover:border-accent-coral/30 hover:-translate-y-1 transition-all duration-300">
+              <span className="text-accent-teal text-xs font-medium uppercase tracking-wider">
+                Process Optimization
+              </span>
+              <h3 className="font-display text-[1.25rem] leading-[1.4] text-text-primary mt-3 mb-2">
+                Onboarding Team Initiative
+              </h3>
+              <p className="text-text-secondary text-sm mb-4">
+                Data-driven recommendation for dedicated Onboarding team that
+                addressed doctor pre-hire process causing attrition.
+              </p>
+              <p className="text-accent-coral text-sm">
+                Impact: $55M incremental revenue, 50+ doctors retained
+              </p>
+            </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/work"
+              className="text-accent-coral hover:text-accent-amber transition-colors inline-flex items-center gap-2"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              View all projects
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* About Preview */}
+      <section className="py-32 bg-bg-secondary">
+        <Container>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-display text-[2.5rem] leading-[1.2] text-text-primary mb-6">
+              About Me
+            </h2>
+            <p className="text-text-secondary text-lg mb-8">
+              I&apos;m a People Analytics leader who believes that data should tell a
+              story. With a background in recruiting and a passion for
+              visualization, I bridge the gap between HR operations and
+              strategic business decisions.
+            </p>
+            <Link
+              href="/about"
+              className="text-accent-coral hover:text-accent-amber transition-colors inline-flex items-center gap-2"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              Learn more about me
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-32">
+        <Container>
+          <div className="text-center">
+            <h2 className="font-display text-[2.5rem] leading-[1.2] text-text-primary mb-4">
+              Let&apos;s connect.
+            </h2>
+            <p className="text-text-secondary mb-8">
+              Open to opportunities in People Analytics leadership and
+              consulting.
+            </p>
+            <Link
+              href="/contact"
+              className="bg-accent-coral text-white px-8 py-4 rounded-lg font-medium hover:opacity-90 transition-all duration-[var(--transition-base)] inline-block"
+            >
+              Get in Touch
+            </Link>
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }
