@@ -22,7 +22,7 @@ export default function HomePage() {
             </p>
 
             {/* Value prop */}
-            <p className="text-text-secondary mb-10 max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
+            <p className="text-text-secondary mb-10 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
               People Analytics leader who partners with HR and business leaders to turn workforce data into strategic action. Proven track record building analytics infrastructure, delivering executive-level insights, and driving measurable business outcomes.
             </p>
 
@@ -133,7 +133,7 @@ export default function HomePage() {
       {/* About Preview */}
       <section className="py-32 bg-bg-secondary">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-[1.2] text-text-primary mb-8">
               About Me
             </h2>
@@ -154,7 +154,7 @@ export default function HomePage() {
       {/* Contact CTA */}
       <section className="py-32">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-[1.2] text-text-primary mb-6">
               Let&apos;s connect.
             </h2>
