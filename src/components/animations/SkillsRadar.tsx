@@ -64,6 +64,7 @@ export function SkillsRadar({
       height={size}
       viewBox={`0 0 ${size} ${size}`}
       className={className}
+      overflow="visible"
     >
       {/* Background rings */}
       {rings.map((ring, i) => (
@@ -149,7 +150,7 @@ export function SkillsRadar({
       {/* Labels */}
       {skills.map((skill, i) => {
         const angle = i * angleStep - Math.PI / 2;
-        const labelRadius = maxRadius + 28;
+        const labelRadius = maxRadius + 40;
         const x = center + labelRadius * Math.cos(angle);
         const y = center + labelRadius * Math.sin(angle);
 

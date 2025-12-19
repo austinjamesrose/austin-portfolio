@@ -16,7 +16,7 @@ const socialLinks = [
     ),
   },
   {
-    href: "https://github.com/austinrose",
+    href: "https://github.com/austinjamesrose",
     label: "GitHub",
     icon: (
       <svg

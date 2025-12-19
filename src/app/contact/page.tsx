@@ -92,7 +92,7 @@ export default function ContactPage() {
             </div>
             <div className="lg:text-right">
               <a
-                href="/resume.pdf"
+                href="/austin_rose.pdf"
                 download
                 className="border border-text-tertiary text-text-primary px-8 py-4 rounded-lg font-medium hover:border-accent-coral hover:text-accent-coral transition-all inline-block text-lg"
               >
