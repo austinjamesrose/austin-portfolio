@@ -7,22 +7,22 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
         <Container className="text-center">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             {/* Decorative icon */}
-            <div className="text-accent-coral text-3xl mb-6">&#10022;</div>
+            <div className="text-accent-coral text-3xl mb-8">&#10022;</div>
 
             {/* Name */}
-            <h1 className="font-display text-[4rem] leading-[1.1] text-text-primary mb-4">
+            <h1 className="font-display text-[4.5rem] md:text-[5.5rem] leading-[1.05] text-text-primary mb-6">
               Austin Rose
             </h1>
 
             {/* Title */}
-            <p className="text-text-secondary text-xl mb-6">
+            <p className="text-text-secondary text-xl md:text-2xl mb-8">
               Head of People Analytics
             </p>
 
             {/* Value prop */}
-            <p className="text-text-secondary mb-8 max-w-lg mx-auto text-lg">
+            <p className="text-text-secondary mb-10 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
               I transform workforce data into strategic decisions that drive
               business outcomes.
             </p>
@@ -49,28 +49,28 @@ export default function HomePage() {
       {/* Impact Metrics Section */}
       <section className="py-32 bg-bg-secondary">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center max-w-5xl mx-auto">
             <div>
-              <p className="font-display text-[4rem] leading-[1.1] text-accent-coral">
+              <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-accent-coral">
                 $55M
               </p>
-              <p className="text-text-secondary text-sm mt-2">
+              <p className="text-text-secondary text-sm md:text-base mt-3">
                 incremental revenue delivered
               </p>
             </div>
             <div>
-              <p className="font-display text-[4rem] leading-[1.1] text-text-primary">
+              <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-text-primary">
                 23K+
               </p>
-              <p className="text-text-secondary text-sm mt-2">
+              <p className="text-text-secondary text-sm md:text-base mt-3">
                 employees supported
               </p>
             </div>
             <div>
-              <p className="font-display text-[4rem] leading-[1.1] text-text-primary">
+              <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-text-primary">
                 950+
               </p>
-              <p className="text-text-secondary text-sm mt-2">
+              <p className="text-text-secondary text-sm md:text-base mt-3">
                 custom Workday reports built
               </p>
             </div>
@@ -134,11 +134,11 @@ export default function HomePage() {
       {/* About Preview */}
       <section className="py-32 bg-bg-secondary">
         <Container>
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-[2.5rem] leading-[1.2] text-text-primary mb-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-[1.2] text-text-primary mb-8">
               About Me
             </h2>
-            <p className="text-text-secondary text-lg mb-8">
+            <p className="text-text-secondary text-lg md:text-xl leading-relaxed mb-10">
               I&apos;m a People Analytics leader who believes that data should tell a
               story. With a background in recruiting and a passion for
               visualization, I bridge the gap between HR operations and
@@ -158,11 +158,11 @@ export default function HomePage() {
       {/* Contact CTA */}
       <section className="py-32">
         <Container>
-          <div className="text-center">
-            <h2 className="font-display text-[2.5rem] leading-[1.2] text-text-primary mb-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-[2.5rem] md:text-[3rem] leading-[1.2] text-text-primary mb-6">
               Let&apos;s connect.
             </h2>
-            <p className="text-text-secondary mb-8">
+            <p className="text-text-secondary text-lg md:text-xl mb-10">
               Open to opportunities in People Analytics leadership and
               consulting.
             </p>
