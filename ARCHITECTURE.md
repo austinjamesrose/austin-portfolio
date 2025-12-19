@@ -38,7 +38,8 @@ austin-portfolio/
 │
 ├── public/                     # Static assets
 │   ├── resume.pdf              # (to be added)
-│   └── images/                 # (to be added)
+│   └── images/
+│       └── headshot.jpg        # Profile photo (circular crop)
 │
 ├── package.json
 ├── tsconfig.json
@@ -60,19 +61,29 @@ Defined in `globals.css` as CSS custom properties:
 --bg-primary: #0f0f0f      /* Main background */
 --bg-secondary: #1a1a1a    /* Cards, sections */
 --bg-tertiary: #242424     /* Elevated elements */
+--bg-card: #1a1a1a         /* Card backgrounds */
 
 /* Accents */
 --accent-primary: #E87C5C  /* Coral - CTAs, highlights */
 --accent-secondary: #F4A261 /* Amber - secondary */
 --accent-tertiary: #2A9D8F /* Teal - links, tags */
+--accent-purple: #A78BFA   /* Purple - skill card accent */
 
-/* Text */
+/* Text (improved contrast) */
 --text-primary: #F5F5F5    /* Headings */
---text-secondary: #A3A3A3  /* Body text */
---text-tertiary: #6B6B6B   /* Captions */
+--text-secondary: #D1D5DB  /* Body text - improved contrast */
+--text-tertiary: #9CA3AF   /* Captions */
+--text-muted: #6B6B6B      /* Muted text */
 
-/* Utility */
+/* Borders */
 --border-subtle: #2A2A2A
+--border-subtle-light: rgba(255, 255, 255, 0.08)
+--border-hover: rgba(232, 124, 92, 0.3)
+
+/* Gradients */
+--gradient-hero: radial-gradient(ellipse at center top, rgba(232,124,92,0.08) 0%, transparent 50%)
+--gradient-card: linear-gradient(135deg, rgba(30,30,30,0.8) 0%, rgba(20,20,20,0.9) 100%)
+--gradient-timeline: linear-gradient(180deg, var(--accent-primary) 0%, rgba(232,124,92,0.1) 100%)
 ```
 
 ### Typography
@@ -114,10 +125,11 @@ Three Google Fonts loaded via `next/font`:
 ### Layout Components
 
 #### `Header` (`src/components/layout/Header.tsx`)
-- Fixed position navigation bar
+- Fixed position navigation bar with `bg-black/80` and `backdrop-blur-md`
 - Logo ("AR") links to home
-- 6 navigation links with active state indicator
-- Backdrop blur effect on scroll
+- 6 navigation links with animated underline on hover
+- Active state shows full underline (`after:w-full`)
+- Subtle bottom border (`border-white/5`)
 - Client component (uses `usePathname`)
 
 #### `Footer` (`src/components/layout/Footer.tsx`)
@@ -170,30 +182,31 @@ text-lg md:text-xl leading-relaxed
 
 ### Homepage (`/`)
 Layout: Centered sections, full-width metrics grid
-1. **Hero** (`max-w-4xl`) - Name (5.5rem), title, value prop, dual CTAs
-2. **Impact Metrics** (`max-w-5xl`, 3-col grid) - $55M, 23K+, 950+ at 5rem
-3. **Featured Work** (2-col grid) - Project cards with hover lift
-4. **About Preview** (`max-w-3xl`) - Brief intro with link
-5. **Contact CTA** (`max-w-3xl`) - Call to action block
+1. **Hero** (`max-w-4xl`) - Radial gradient background, pulsing star icon, name (5.5rem), title, value prop (`max-w-3xl`), dual CTAs with hover lift
+2. **Impact Metrics** - 3-col grid with vertical dividers, top/bottom borders, $55M (coral), 23K+, 950+
+3. **Featured Work** (2-col grid) - Project cards with gradient background and hover effects
+4. **About Preview** (`max-w-4xl`) - Circular headshot (144px), career narrative hook
+5. **Contact CTA** (`max-w-4xl`) - Growth-focused messaging
 
 ### About (`/about`)
-Layout: Full-width grids, no narrow constraints
-1. **Hero** (2-col grid) - Title left-aligned, story split across columns
-2. **Skills & Tools** (3-col grid) - Full-width cards with `rounded-2xl p-8`
-3. **My Approach** (3-col grid) - Philosophy principles side by side
+Layout: 12-column grid with headshot
+1. **Hero** (4-col/8-col grid) - Circular headshot (280px) left, career narrative right
+2. **Skills & Tools** (3-col grid) - Color-coded left borders (coral/teal/purple), bullet points
+3. **What Makes Me Different** (3-col grid) - Strategic Partnership, Curiosity-Driven, Hands-On Builder
 
 ### Work (`/work`)
 Layout: Full-width grid
-- Filter bar with category pills (static, functionality pending)
-- Project grid (2-col) with 5 projects
-- Each card: category tag, title, description, impact metric
+- Filter bar with 7 category pills (All, Executive Reporting, Data Infrastructure, Process Optimization, Tools & Automation, Data Governance, Predictive Analytics)
+- Project grid (2-col) with 7 projects including Workforce Forecasting and Recruiting Funnel Optimization
+- Cards: gradient background, abstract bar chart placeholder, hover border glow and lift
 - Links to individual project pages (routes pending)
 
 ### Experience (`/experience`)
-Layout: 12-column grid (3|9 split)
-- **Hero** - Title + subtitle, left-aligned
-- **Timeline** - Clean rows with date/location left, content right
-- **Education** - Same grid layout as experience items
+Layout: Visual timeline with gradient connector
+- **Hero** - Title + subtitle
+- **Timeline** - Vertical gradient line (`from-accent-coral to-accent-coral/10`), dot markers, date badges with coral pill styling
+- 6 positions: TAG (Head of People Analytics), Chime, Vineti, NextRoll, Delivery Hero, Earlier Roles
+- **Education** - Mercer University, BBA Sports Business Management, 2016
 
 ### Playground (`/playground`)
 Layout: 2-col grid
@@ -205,8 +218,30 @@ Layout: 2-col grid
 
 ### Contact (`/contact`)
 Layout: 2-col grid throughout
-- **Hero** (2-col) - CTA + email left, stacked social cards right
+- **Hero** (2-col) - CTA + email (austin@austinrose.io) left, social cards with arrow hover animation right
 - **Resume** (2-col) - Description left, download button right
+- Social links: LinkedIn (roseaustin), GitHub (austinjamesrose), Email
+
+## Animations
+
+Defined in `globals.css`:
+
+```css
+/* Available animations */
+@keyframes fadeUp      /* Scroll reveal - translateY(20px) to 0 */
+@keyframes fadeIn      /* Page load - translateY(10px) to 0 */
+@keyframes pulse       /* Icon pulse - scale 1 to 1.1, opacity 0.7 to 1 */
+@keyframes float       /* Subtle float - translateY(0) to -4px */
+@keyframes underlineGrow /* Nav underline - scaleX(0) to 1 */
+
+/* Utility classes */
+.animate-fade-in       /* Page content wrapper */
+.animate-fade-up       /* Scroll reveal */
+.animate-pulse-slow    /* 3s infinite pulse (hero star) */
+.animate-float         /* 3s infinite float */
+```
+
+Respects `prefers-reduced-motion` for accessibility.
 
 ## Tailwind v4 Configuration
 
