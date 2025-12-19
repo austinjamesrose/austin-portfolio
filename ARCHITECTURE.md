@@ -131,34 +131,72 @@ Three Google Fonts loaded via `next/font`:
 - Horizontal padding (24px)
 - Polymorphic `as` prop for semantic HTML
 
+## Layout Patterns
+
+All pages use wide, full-container layouts (1200px max-width). Avoid narrow `max-w-2xl` or `max-w-3xl` constraints that create squished layouts.
+
+### Common Patterns
+
+```tsx
+// Two-column grid (used on About, Contact)
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+
+// Three-column grid (used for cards, skills)
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+
+// Left metadata / Right content (used on Experience)
+<div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
+  <div className="md:col-span-4 lg:col-span-3">  {/* Date, location */}
+  <div className="md:col-span-8 lg:col-span-9">  {/* Main content */}
+```
+
+### Responsive Typography
+
+```tsx
+// Page titles
+text-[3rem] md:text-[4rem]
+
+// Section titles
+text-[2rem] md:text-[2.5rem]
+
+// Card titles
+text-[1.5rem] md:text-[1.75rem]
+
+// Body text
+text-lg md:text-xl leading-relaxed
+```
+
 ## Pages
 
 ### Homepage (`/`)
-Sections:
-1. **Hero** - Name, title, value prop, dual CTAs
-2. **Impact Metrics** - $55M, 23K+, 950+ in large display type
-3. **Featured Work** - 2 project cards with hover effects
-4. **About Preview** - Brief intro with link
-5. **Contact CTA** - Call to action block
+Layout: Centered sections, full-width metrics grid
+1. **Hero** (`max-w-4xl`) - Name (5.5rem), title, value prop, dual CTAs
+2. **Impact Metrics** (`max-w-5xl`, 3-col grid) - $55M, 23K+, 950+ at 5rem
+3. **Featured Work** (2-col grid) - Project cards with hover lift
+4. **About Preview** (`max-w-3xl`) - Brief intro with link
+5. **Contact CTA** (`max-w-3xl`) - Call to action block
 
 ### About (`/about`)
-Sections:
-1. **Professional Story** - Career narrative
-2. **Skills & Tools** - 3-column grid (Data, Strategy, Leadership)
-3. **Philosophy** - 3 approach principles
+Layout: Full-width grids, no narrow constraints
+1. **Hero** (2-col grid) - Title left-aligned, story split across columns
+2. **Skills & Tools** (3-col grid) - Full-width cards with `rounded-2xl p-8`
+3. **My Approach** (3-col grid) - Philosophy principles side by side
 
 ### Work (`/work`)
+Layout: Full-width grid
 - Filter bar with category pills (static, functionality pending)
-- Project grid with 5 projects
+- Project grid (2-col) with 5 projects
 - Each card: category tag, title, description, impact metric
 - Links to individual project pages (routes pending)
 
 ### Experience (`/experience`)
-- Vertical timeline with alternating cards
-- 3 positions with highlights
-- Education section
+Layout: 12-column grid (3|9 split)
+- **Hero** - Title + subtitle, left-aligned
+- **Timeline** - Clean rows with date/location left, content right
+- **Education** - Same grid layout as experience items
 
 ### Playground (`/playground`)
+Layout: 2-col grid
 - 4 placeholder cards for future content:
   - Interactive Dashboards (Tableau embeds)
   - SQL & Python Samples
@@ -166,9 +204,9 @@ Sections:
   - Data Stories
 
 ### Contact (`/contact`)
-- Email CTA button
-- Social links grid
-- Resume download section
+Layout: 2-col grid throughout
+- **Hero** (2-col) - CTA + email left, stacked social cards right
+- **Resume** (2-col) - Description left, download button right
 
 ## Tailwind v4 Configuration
 
