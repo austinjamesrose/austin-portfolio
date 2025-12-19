@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
+import { MotionProvider } from "@/components/animations";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -73,9 +74,11 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <Header />
-        <main className="min-h-screen pt-16">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <Header />
+          <main className="min-h-screen pt-16">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

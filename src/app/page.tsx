@@ -1,82 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/layout";
+import { StatsSection, HeroSection } from "@/components/home";
 
 export default function HomePage() {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-[radial-gradient(ellipse_at_center_top,rgba(232,124,92,0.08)_0%,transparent_50%)]">
-        <Container className="text-center">
-          <div className="max-w-[896px] mx-auto">
-            {/* Decorative icon */}
-            <div className="text-accent-coral text-3xl mb-8 animate-pulse-slow">&#10022;</div>
-
-            {/* Name */}
-            <h1 className="font-display text-[4.5rem] md:text-[5.5rem] leading-[1.05] text-text-primary mb-6">
-              Austin Rose
-            </h1>
-
-            {/* Title */}
-            <p className="text-text-secondary text-xl md:text-2xl mb-8">
-              Head of People Analytics
-            </p>
-
-            {/* Value prop */}
-            <p className="text-text-secondary mb-10 max-w-[800px] mx-auto text-lg md:text-xl leading-relaxed">
-              People Analytics leader who partners with HR and business leaders to turn workforce data into strategic action. Proven track record building analytics infrastructure, delivering executive-level insights, and driving measurable business outcomes.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex gap-4 justify-center">
-              <Link
-                href="/work"
-                className="bg-accent-coral text-white px-6 py-3 rounded-lg font-medium hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-coral/30 transition-all duration-200"
-              >
-                View My Work
-              </Link>
-              <Link
-                href="/contact"
-                className="border border-text-tertiary text-text-primary px-6 py-3 rounded-lg font-medium hover:border-accent-coral hover:text-accent-coral hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-coral/30 transition-all duration-200"
-              >
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <HeroSection />
 
       {/* Impact Metrics Section */}
-      <section className="py-20 bg-bg-secondary border-t border-b border-white/10">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 text-center max-w-[1024px] mx-auto">
-            <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
-              <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-accent-coral">
-                $55M
-              </p>
-              <p className="text-text-secondary text-sm md:text-base mt-3">
-                incremental revenue delivered
-              </p>
-            </div>
-            <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
-              <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-text-primary">
-                23K+
-              </p>
-              <p className="text-text-secondary text-sm md:text-base mt-3">
-                employees supported
-              </p>
-            </div>
-            <div className="relative md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-24 md:after:w-px md:after:bg-white/10 md:last:after:hidden">
-              <p className="font-display text-[3.5rem] md:text-[5rem] leading-[1.1] text-text-primary">
-                950+
-              </p>
-              <p className="text-text-secondary text-sm md:text-base mt-3">
-                custom Workday reports built
-              </p>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <StatsSection />
 
       {/* Featured Work Preview */}
       <section className="py-32">
