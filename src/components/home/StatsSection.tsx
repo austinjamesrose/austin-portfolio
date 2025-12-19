@@ -19,7 +19,7 @@ const stats = [
     highlight: false,
   },
   {
-    value: 950,
+    value: 1000,
     suffix: "+",
     label: "custom Workday reports built",
     highlight: false,

@@ -8,6 +8,7 @@
 | TypeScript | 5.x | Type safety |
 | Tailwind CSS | 4.x | Utility-first styling |
 | React | 19.x | UI library |
+| Framer Motion | 11.x | Animations (LazyMotion for optimized bundle) |
 
 ## Project Structure
 
@@ -15,13 +16,13 @@
 austin-portfolio/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx          # Root layout (fonts, header, footer)
+│   │   ├── layout.tsx          # Root layout (fonts, header, footer, MotionProvider)
 │   │   ├── page.tsx            # Homepage
 │   │   ├── globals.css         # Design tokens & base styles
 │   │   ├── about/
-│   │   │   └── page.tsx        # About page
+│   │   │   └── page.tsx        # About page (with SkillsRadar)
 │   │   ├── work/
-│   │   │   └── page.tsx        # Portfolio grid
+│   │   │   └── page.tsx        # Portfolio grid (with DataVizPattern)
 │   │   ├── experience/
 │   │   │   └── page.tsx        # Career timeline
 │   │   ├── playground/
@@ -29,12 +30,36 @@ austin-portfolio/
 │   │   └── contact/
 │   │       └── page.tsx        # Contact page
 │   │
+│   ├── hooks/                  # Custom React hooks
+│   │   ├── index.ts
+│   │   └── useReducedMotion.ts # Accessibility hook for motion preferences
+│   │
+│   ├── lib/                    # Utility libraries
+│   │   └── animations/
+│   │       └── variants.ts     # Reusable Framer Motion variants
+│   │
 │   └── components/
-│       └── layout/
-│           ├── index.ts        # Barrel export
-│           ├── Header.tsx      # Fixed navigation
-│           ├── Footer.tsx      # Site footer
-│           └── Container.tsx   # Max-width wrapper
+│       ├── layout/
+│       │   ├── index.ts        # Barrel export
+│       │   ├── Header.tsx      # Fixed navigation
+│       │   ├── Footer.tsx      # Site footer
+│       │   └── Container.tsx   # Max-width wrapper
+│       │
+│       ├── animations/         # Animation components
+│       │   ├── index.ts        # Barrel export
+│       │   ├── MotionProvider.tsx    # LazyMotion wrapper
+│       │   ├── ScrollReveal.tsx      # Scroll-triggered fade animations
+│       │   ├── CountUp.tsx           # Animated number counter
+│       │   ├── Sparkle.tsx           # Sparkle micro-interaction
+│       │   ├── MagneticButton.tsx    # Magnetic hover effect
+│       │   ├── ParticleBackground.tsx # Canvas particle animation
+│       │   ├── DataVizPattern.tsx    # SVG data visualization patterns
+│       │   └── SkillsRadar.tsx       # SVG radar chart
+│       │
+│       └── home/               # Homepage-specific components
+│           ├── index.ts
+│           ├── HeroSection.tsx # Hero with particles & sparkles
+│           └── StatsSection.tsx # Animated stats with CountUp
 │
 ├── public/                     # Static assets
 │   ├── resume.pdf              # (to be added)
@@ -143,6 +168,63 @@ Three Google Fonts loaded via `next/font`:
 - Horizontal padding (24px)
 - Polymorphic `as` prop for semantic HTML
 
+### Animation Components
+
+All animation components are client components (`'use client'`) and respect `prefers-reduced-motion`.
+
+#### `MotionProvider` (`src/components/animations/MotionProvider.tsx`)
+- Wraps app with Framer Motion's `LazyMotion` for optimized bundle size
+- Uses `domAnimation` features (smaller than full motion bundle)
+
+#### `ScrollReveal` (`src/components/animations/ScrollReveal.tsx`)
+- Wrapper for scroll-triggered fade-up animations
+- Props: `variants`, `delay`, `once`, `threshold`, `as`
+- Uses `useInView` from Framer Motion
+
+#### `CountUp` (`src/components/animations/CountUp.tsx`)
+- Animated number counter triggered on scroll
+- Props: `value`, `prefix`, `suffix`, `duration`, `delay`, `formatOptions`
+- Uses spring physics for smooth counting
+
+#### `Sparkle` (`src/components/animations/Sparkle.tsx`)
+- Decorative sparkle micro-interactions around children
+- Auto-generates sparkles on 2s interval
+- Uses `AnimatePresence` for enter/exit animations
+
+#### `MagneticButton` (`src/components/animations/MagneticButton.tsx`)
+- Subtle magnetic pull effect toward cursor on hover
+- Props: `strength` (default 0.3)
+- Uses spring physics for smooth movement
+
+#### `ParticleBackground` (`src/components/animations/ParticleBackground.tsx`)
+- Canvas-based particle animation for hero background
+- Props: `particleCount` (default 60), `connectionDistance` (default 120)
+- Features: clustering, mouse attraction, connection lines, boundary wrapping
+- Returns `null` when reduced motion preferred
+
+#### `DataVizPattern` (`src/components/animations/DataVizPattern.tsx`)
+- Abstract SVG data visualization patterns for project cards
+- Props: `pattern` ("bars" | "nodes" | "waves" | "scatter" | "flow"), `animate`
+- 5 pattern types mapped to project categories
+
+#### `SkillsRadar` (`src/components/animations/SkillsRadar.tsx`)
+- Animated SVG radar/spider chart for skills visualization
+- Props: `skills` (array of {name, level, color}), `size`
+- Features: grid rings, axis lines, animated polygon, skill points with labels
+
+### Home Components
+
+#### `HeroSection` (`src/components/home/HeroSection.tsx`)
+- Client component with particle background
+- Staggered `ScrollReveal` animations on each element
+- `Sparkle` wrapper on decorative icon
+- `MagneticButton` wrappers on CTAs
+
+#### `StatsSection` (`src/components/home/StatsSection.tsx`)
+- Client component with animated stats
+- Uses `CountUp` for each metric ($55M, 23K+, 950+)
+- Staggered reveal with `ScrollReveal`
+
 ## Layout Patterns
 
 All pages use wide, full-container layouts (1200px max-width). Avoid narrow `max-w-2xl` or `max-w-3xl` constraints that create squished layouts.
@@ -182,8 +264,8 @@ text-lg md:text-xl leading-relaxed
 
 ### Homepage (`/`)
 Layout: Centered sections, full-width metrics grid
-1. **Hero** (`max-w-4xl`) - Radial gradient background, pulsing star icon, name (5.5rem), title, value prop (`max-w-3xl`), dual CTAs with hover lift
-2. **Impact Metrics** - 3-col grid with vertical dividers, top/bottom borders, $55M (coral), 23K+, 950+
+1. **Hero** (`HeroSection` component) - Particle background, radial gradient overlay, sparkle icon, magnetic CTAs, staggered scroll reveals
+2. **Impact Metrics** (`StatsSection` component) - 3-col grid with animated count-up ($55M, 23K+, 950+), staggered reveals
 3. **Featured Work** (2-col grid) - Project cards with gradient background and hover effects
 4. **About Preview** (`max-w-4xl`) - Circular headshot (144px), career narrative hook
 5. **Contact CTA** (`max-w-4xl`) - Growth-focused messaging
@@ -191,14 +273,14 @@ Layout: Centered sections, full-width metrics grid
 ### About (`/about`)
 Layout: 12-column grid with headshot
 1. **Hero** (4-col/8-col grid) - Circular headshot (280px) left, career narrative right
-2. **Skills & Tools** (3-col grid) - Color-coded left borders (coral/teal/purple), bullet points
+2. **Skills & Tools** - Animated `SkillsRadar` chart (6 skills), plus 3-col grid with color-coded borders
 3. **What Makes Me Different** (3-col grid) - Strategic Partnership, Curiosity-Driven, Hands-On Builder
 
 ### Work (`/work`)
 Layout: Full-width grid
 - Filter bar with 7 category pills (All, Executive Reporting, Data Infrastructure, Process Optimization, Tools & Automation, Data Governance, Predictive Analytics)
 - Project grid (2-col) with 7 projects including Workforce Forecasting and Recruiting Funnel Optimization
-- Cards: gradient background, abstract bar chart placeholder, hover border glow and lift
+- Cards: gradient background, animated `DataVizPattern` (5 types mapped to categories), hover border glow and lift
 - Links to individual project pages (routes pending)
 
 ### Experience (`/experience`)
@@ -224,6 +306,27 @@ Layout: 2-col grid throughout
 
 ## Animations
 
+### Framer Motion (Primary)
+
+The site uses Framer Motion with `LazyMotion` for optimized bundle size. Key patterns:
+
+```tsx
+// Animation variants (src/lib/animations/variants.ts)
+fadeUp       // opacity 0→1, y 20→0
+fadeIn       // opacity 0→1
+staggerContainer  // staggerChildren: 0.1, delayChildren: 0.1
+scaleIn      // opacity 0→1, scale 0.9→1 (spring)
+reducedMotionVariants  // instant fallback
+
+// Transition presets
+transitionPresets.fast   // 150ms
+transitionPresets.base   // 250ms
+transitionPresets.slow   // 400ms
+transitionPresets.spring // stiffness: 400, damping: 30
+```
+
+### CSS Animations (Legacy/Supplemental)
+
 Defined in `globals.css`:
 
 ```css
@@ -237,11 +340,16 @@ Defined in `globals.css`:
 /* Utility classes */
 .animate-fade-in       /* Page content wrapper */
 .animate-fade-up       /* Scroll reveal */
-.animate-pulse-slow    /* 3s infinite pulse (hero star) */
+.animate-pulse-slow    /* 3s infinite pulse */
 .animate-float         /* 3s infinite float */
 ```
 
-Respects `prefers-reduced-motion` for accessibility.
+### Accessibility
+
+All animations respect `prefers-reduced-motion`:
+- Framer Motion: `useReducedMotion()` hook returns instant transitions
+- CSS: Media query disables animations
+- Canvas: `ParticleBackground` returns `null` when motion reduced
 
 ## Tailwind v4 Configuration
 
@@ -290,14 +398,21 @@ npx vercel --prod
 # Or connect GitHub repo at vercel.com/new
 ```
 
-## Future Enhancements (Phase 2+)
+## Future Enhancements
 
 - [ ] Individual project pages (`/work/[slug]`)
-- [ ] Project filtering functionality
-- [ ] Framer Motion scroll animations
+- [ ] Project filtering functionality (currently static)
 - [ ] Tableau dashboard embeds
 - [ ] Code syntax highlighting (Prism/Shiki)
 - [ ] Contact form with email integration
 - [ ] Resume PDF generation
 - [ ] OG image generation
 - [ ] Analytics integration
+
+### Completed
+- [x] Framer Motion scroll animations
+- [x] Particle background animation
+- [x] Count-up statistics animation
+- [x] Data visualization patterns for project cards
+- [x] Skills radar chart
+- [x] Micro-interactions (sparkles, magnetic buttons)
