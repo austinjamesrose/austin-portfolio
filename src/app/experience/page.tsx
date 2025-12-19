@@ -58,92 +58,82 @@ export default function ExperiencePage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-32">
+      <section className="py-24 md:py-32">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-[2.5rem] leading-[1.2] text-text-primary mb-6">
-              Experience
-            </h1>
-            <p className="text-text-secondary text-lg">
-              My journey from recruiting to People Analytics leadership.
-            </p>
-          </div>
+          <h1 className="font-display text-[3rem] md:text-[4rem] leading-[1.1] text-text-primary mb-6">
+            Experience
+          </h1>
+          <p className="text-text-secondary text-lg md:text-xl max-w-2xl">
+            My journey from recruiting to People Analytics leadership.
+          </p>
         </Container>
       </section>
 
       {/* Timeline */}
-      <section className="pb-32">
+      <section className="pb-24 md:pb-32">
         <Container>
-          <div className="max-w-3xl mx-auto">
-            {/* Timeline line */}
-            <div className="relative">
-              {/* Vertical line */}
-              <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border-subtle transform md:-translate-x-1/2" />
-
-              {experiences.map((exp, index) => (
-                <div
-                  key={exp.period}
-                  className={`relative mb-12 md:mb-16 ${
-                    index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%]"
-                  }`}
-                >
-                  {/* Timeline dot */}
-                  <div
-                    className={`absolute top-2 w-3 h-3 rounded-full bg-accent-coral left-0 md:left-1/2 transform md:-translate-x-1/2`}
-                  />
-
-                  {/* Content */}
-                  <div
-                    className={`ml-8 md:ml-0 ${
-                      index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-                    }`}
-                  >
-                    <span className="text-accent-coral text-sm font-medium">
-                      {exp.period}
-                    </span>
-                    <h3 className="font-display text-[1.25rem] leading-[1.4] text-text-primary mt-1">
-                      {exp.title}
-                    </h3>
-                    <p className="text-text-secondary text-sm mb-4">
-                      {exp.company} &bull; {exp.location}
-                    </p>
-                    <ul
-                      className={`space-y-2 text-text-secondary text-sm ${
-                        index % 2 === 0 ? "md:text-right" : ""
-                      }`}
-                    >
-                      {exp.highlights.map((highlight, i) => (
-                        <li key={i}>{highlight}</li>
-                      ))}
-                    </ul>
-                  </div>
+          <div className="space-y-12 md:space-y-0">
+            {experiences.map((exp, index) => (
+              <div
+                key={exp.period}
+                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 pb-12 md:pb-16 border-b border-border-subtle last:border-0"
+              >
+                {/* Left column - metadata */}
+                <div className="md:col-span-4 lg:col-span-3">
+                  <span className="text-accent-coral text-base md:text-lg font-medium">
+                    {exp.period}
+                  </span>
+                  <p className="text-text-tertiary text-sm md:text-base mt-1">
+                    {exp.location}
+                  </p>
                 </div>
-              ))}
-            </div>
+
+                {/* Right column - content */}
+                <div className="md:col-span-8 lg:col-span-9">
+                  <h3 className="font-display text-[1.5rem] md:text-[1.75rem] leading-[1.3] text-text-primary">
+                    {exp.title}
+                  </h3>
+                  <p className="text-text-secondary text-base md:text-lg mt-1 mb-6">
+                    {exp.company}
+                  </p>
+                  <ul className="space-y-3">
+                    {exp.highlights.map((highlight, i) => (
+                      <li
+                        key={i}
+                        className="text-text-secondary text-base md:text-lg leading-relaxed flex gap-3"
+                      >
+                        <span className="text-accent-coral mt-2">•</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
 
       {/* Education */}
-      <section className="py-32 bg-bg-secondary">
+      <section className="py-24 md:py-32 bg-bg-secondary">
         <Container>
-          <h2 className="font-display text-[1.75rem] leading-[1.3] text-text-primary mb-12 text-center">
+          <h2 className="font-display text-[2rem] md:text-[2.5rem] leading-[1.2] text-text-primary mb-12">
             Education
           </h2>
-          <div className="max-w-xl mx-auto">
-            {education.map((edu) => (
-              <div
-                key={edu.school}
-                className="bg-bg-tertiary rounded-xl p-6 text-center"
-              >
-                <h3 className="font-display text-[1.25rem] leading-[1.4] text-text-primary">
-                  {edu.degree} in {edu.field}
-                </h3>
-                <p className="text-text-secondary mt-2">
-                  {edu.school} &bull; {edu.year}
-                </p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
+            <div className="md:col-span-4 lg:col-span-3">
+              <span className="text-accent-coral text-base md:text-lg font-medium">
+                {education[0].year}
+              </span>
+            </div>
+            <div className="md:col-span-8 lg:col-span-9">
+              <h3 className="font-display text-[1.5rem] md:text-[1.75rem] leading-[1.3] text-text-primary">
+                {education[0].degree} in {education[0].field}
+              </h3>
+              <p className="text-text-secondary text-base md:text-lg mt-1">
+                {education[0].school}
+              </p>
+            </div>
           </div>
         </Container>
       </section>
