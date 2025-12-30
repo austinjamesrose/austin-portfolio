@@ -25,28 +25,39 @@ export default function PlaygroundPage() {
         </Container>
       </section>
 
-      {/* Coming Soon */}
+      {/* Projects */}
       <section className="pb-32">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Tableau Embed Placeholder */}
-            <div className="bg-bg-secondary border border-border-subtle rounded-xl p-6">
-              <span className="text-accent-teal text-xs font-medium uppercase tracking-wider">
-                Coming Soon
+            {/* Universal Orlando Wait Time Tracker */}
+            <a
+              href="https://austin-rose-wait-time-project.streamlit.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-bg-secondary border border-border-subtle rounded-xl p-6 hover:border-accent-coral/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              <span className="text-accent-coral text-xs font-medium uppercase tracking-wider">
+                Live Project
               </span>
               <h3 className="font-display text-[1.25rem] leading-[1.4] text-text-primary mt-3 mb-4">
-                Interactive Dashboards
+                Universal Orlando Wait Time Tracker
               </h3>
-              <div className="aspect-video bg-bg-tertiary rounded-lg flex items-center justify-center">
-                <p className="text-text-tertiary text-sm">
-                  Tableau Public embeds coming soon
-                </p>
+              <div className="aspect-video bg-bg-tertiary rounded-lg flex items-center justify-center overflow-hidden">
+                <div className="text-center p-4">
+                  <p className="text-accent-coral text-2xl mb-2">🎢</p>
+                  <p className="text-text-secondary text-sm">
+                    Interactive Streamlit Dashboard
+                  </p>
+                </div>
               </div>
               <p className="text-text-secondary text-sm mt-4">
-                Explore sample HR metrics dashboards with anonymized data
-                showcasing retention, headcount, and talent acquisition trends.
+                Real-time data pipeline collecting wait times every 30 minutes via GitHub Actions.
+                Explore patterns by hour, day, and ride across Islands of Adventure, Universal Studios, and Epic Universe.
               </p>
-            </div>
+              <p className="text-accent-teal text-xs mt-3">
+                Python • Streamlit • SQLite • GitHub Actions
+              </p>
+            </a>
 
             {/* Code Samples Placeholder */}
             <div className="bg-bg-secondary border border-border-subtle rounded-xl p-6">
