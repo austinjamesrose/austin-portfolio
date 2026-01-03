@@ -1,7 +1,7 @@
 ---
 title: "Recruiting Metrics Report Generator"
 category: "Tools & Automation"
-description: "Python automation that transforms raw recruiting data into formatted Excel reports with pipeline metrics, YoY comparisons, and conditional formatting."
+description: "Python automation that reduces a 4-5 hour monthly reporting process to a single click. Pulls Workday data, calculates recruiting metrics, and outputs formatted Excel reports."
 tags: ["Python", "pandas", "openpyxl", "Automation"]
 featured: true
 draft: false
@@ -9,13 +9,15 @@ externalUrl: "https://github.com/austinjamesrose/recruiting-metrics-demo"
 pattern: "flow"
 ---
 
-## The Problem
+## Background
 
-Weekly recruiting reports are tedious. Every week, someone has to pull data from multiple sources, calculate conversion rates, compare against targets, format everything nicely in Excel, and send it out. It's repetitive, error-prone, and eats hours that could go toward actual analysis.
+I had a recruiting report that was refreshed monthly. The process took 4-5 hours: pull reports from Workday, clean the data, update the Excel workbook, apply formatting. It was time-consuming and easy to make mistakes.
 
-## The Solution
+## What I Built
 
-I built a Python pipeline that does it all automatically. Point it at your data sources, run one command, and get a professionally formatted Excel workbook with multiple analysis sheets, conditional highlighting, and frozen headers.
+A Python script that automates the entire workflow. It takes four input files (pipeline activity, monthly targets, headcount changes, and open requisitions) and generates a formatted Excel workbook with seven analysis sheets.
+
+The script is wrapped in an Apple Shortcut, so running it is a single click. The report now goes out weekly instead of monthly.
 
 ## What It Calculates
 
@@ -32,31 +34,11 @@ I built a Python pipeline that does it all automatically. Point it at your data 
 **Time Period Analysis**
 - Month-to-date, quarter-to-date, and year-to-date views
 - Year-over-year comparisons
-- Trend identification
 
-## How It's Built
+## Technical Notes
 
-The codebase separates concerns cleanly:
+Built with Python, pandas, and openpyxl. The architecture separates reusable metric functions from the report generation logic, so the calculations can be imported into other contexts if needed. Date handling is dynamic throughout, with support for generating historical reports via a reference date parameter.
 
-- `recruiting_metrics.py` contains reusable calculation functions
-- `weekly_update.py` orchestrates the report generation
-- Input data comes from CSV/Excel files (recruiting activity, targets, headcount changes, open requisitions)
-- Output is a formatted `.xlsx` workbook ready to distribute
+## Why It's Here
 
-This modular design means the metric functions can be imported and reused in other contexts: dashboards, ad-hoc analysis, or different report formats.
-
-## Flexible Timing
-
-Need to regenerate last month's report for an audit? Just pass a reference date:
-
-```bash
-python weekly_update.py --reference-date 2024-11-15
-```
-
-The system recalculates everything as of that date, using point-in-time snapshots for requisition counts rather than cumulative tracking.
-
-## Why It Matters
-
-Automating reporting isn't glamorous, but it's high-leverage. This script saves hours every week and eliminates copy-paste errors. More importantly, it frees up time for the analysis that actually moves the needle.
-
-The patterns here (modular calculations, configurable date ranges, professional Excel output) transfer to any recurring report. If you're manually building the same Excel file every week, there's probably a version of this that could help.
+The script is tailored to my specific dataset and won't work out of the box for anyone else. I'm sharing it as an example of the kind of automation our People Analytics team is building. The patterns - Workday data extraction, modular calculations, formatted Excel output - are applicable to any recurring report.

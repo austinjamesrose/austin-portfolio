@@ -1,7 +1,7 @@
 ---
 title: "QB League Fantasy Football"
 category: "Personal Project"
-description: "Custom fantasy football website for a quarterback-only league with friends. Built from scratch to handle our unique scoring rules and league history."
+description: "Automated fantasy football scoring for a QB-only league with friends. Replaces manual stat tracking with live updates powered by NFL data."
 tags: ["Next.js", "TypeScript"]
 featured: true
 draft: false
@@ -11,16 +11,20 @@ pattern: "bars"
 
 ## The Problem
 
-My friends and I run a fantasy football league with a twist: we only draft quarterbacks. Standard fantasy platforms don't handle this well. The scoring is different, the strategy is different, and we wanted a place to track our league's history and trash talk.
+My friends and I run a fantasy football league where we only draft quarterbacks. We were tracking stats by hand every few weeks, which meant standings were always outdated and nobody knew where they stood until someone finally updated the spreadsheet.
 
 ## The Solution
 
-I built qbleague.xyz from scratch using Next.js and TypeScript. It handles our custom scoring rules, maintains historical records going back years, and gives us a dedicated home for the league.
+I built qbleague.xyz in a night using Claude Code. It automatically pulls QB stats and calculates scores based on our custom rules, so standings update as games finish instead of whenever someone remembers to do the math.
 
-## Features
+## How It Works
 
-The site tracks current standings, historical winners, and head-to-head records. It's designed to be fast, mobile-friendly, and just fun to use when checking scores on Sunday.
+The site pulls official NFL data via nflreadpy, tracking passing yards, rushing yards, touchdowns, interceptions, and QB wins. Our scoring system has some quirks (prime time wins count extra), and the site handles all of it automatically.
 
-## Why Build It?
+## What's Next
 
-Partly because the existing platforms didn't fit our format. Partly because I wanted an excuse to build something for my friends. It's become a small tradition: every season, the site gets a few updates and we all check it religiously during games.
+This is fresh - we haven't run a full season with it yet. But the days of hand-tracking stats in a spreadsheet are over.
+
+## Credits
+
+NFL stats provided by [nflreadpy](https://github.com/nflverse/nflverse-data).
