@@ -13,13 +13,15 @@ draft: false
 
 ## Why Pokemon?
 
-During the holiday downtime, I wanted to practice workforce analytics: the kind of analysis HR teams use to understand talent pipelines, identify skill gaps, and spot high performers. The problem? Real workforce data is sensitive. You can't exactly publish an analysis of your company's performance reviews.
+As I was experimenting with Claude Code over the holiday, I wanted to practice workforce analytics—the kind of analysis HR teams use to understand talent pipelines, identify skill gaps, and spot high performers. The problem? Real workforce data is sensitive. You can't exactly publish an analysis of your company's performance reviews.
 
 So I needed a proxy dataset. Something with enough complexity to be interesting, enough structure to apply real frameworks, and enough public familiarity that anyone could follow along.
 
-Pokemon fit perfectly. It's a hobby I love, and when you think about it, the data structure is surprisingly rich: every Pokemon has stats (skills), types (departments), abilities (behavioral traits), evolution stages (career levels), and competitive usage data (performance ratings). There are 25 years of design decisions baked into over a thousand creatures. It's basically a fictional HR database.
+Pokemon, a personal hobby that I love, fit perfectly.
 
-What started as a methodology exercise turned into genuine discoveries about game design patterns, along with a few lessons about analytics pitfalls that apply far beyond Pokemon.
+Think about it: every Pokemon has stats (skills), types (departments), abilities (behavioral traits), evolution stages (career levels), and competitive usage data (performance ratings). There's 25 years of design decisions baked into over a thousand creatures. It's basically a fictional HR database.
+
+What started as a methodology exercise turned into genuine discoveries about game design patterns—and a few lessons about analytics pitfalls that apply far beyond Pokemon.
 
 ---
 
@@ -27,11 +29,13 @@ What started as a methodology exercise turned into genuine discoveries about gam
 
 I mapped Pokemon concepts to workforce equivalents:
 
-- **Base Stats** → Core Competencies
-- **Type** → Department/Function
-- **Evolution Stage** → Career Level
-- **Competitive Usage** → Performance Rating
-- **Generation** → Tenure Cohort
+| Pokemon Concept | Workforce Equivalent |
+|-----------------|---------------------|
+| Base Stats | Core Competencies |
+| Type | Department/Function |
+| Evolution Stage | Career Level |
+| Competitive Usage | Performance Rating |
+| Generation | Tenure Cohort |
 
 With 1,025 Pokemon spanning 9 generations, I had a rich dataset to cluster, analyze, and stress-test. Here's what stood out.
 
@@ -55,15 +59,15 @@ The algorithm had no idea what a "tank" or "sweeper" was in Pokemon terms. It ju
 
 **The HR insight**: Most organizations define job families top-down. Leadership decides there should be "analysts" and "managers" and "specialists," then slots people into those boxes. But what if you let the data tell you what roles actually exist?
 
-Cluster your workforce on competency assessments, skills inventories, or even project contribution patterns. You'll often find natural groupings that don't match your org chart, and that's valuable information. Maybe your "Senior Analysts" actually split into two distinct profiles: one group that's deeply technical, another that's client-facing. They have the same title but fundamentally different strengths.
+Cluster your workforce on competency assessments, skills inventories, or even project contribution patterns. You'll often find natural groupings that don't match your org chart—and that's valuable information. Maybe your "Senior Analysts" actually split into two distinct profiles: one group that's deeply technical, another that's client-facing. They have the same title but fundamentally different strengths.
 
-This approach also reveals when your job architecture is fighting reality. If your clusters don't map to your levels, your leveling system might be measuring the wrong things. The Pokemon data found 5 clean archetypes from 6 simple stats. Your competency data is richer than that. Imagine what it could surface.
+This approach also reveals when your job architecture is fighting reality. If your clusters don't map to your levels, your leveling system might be measuring the wrong things. The Pokemon data found 5 clean archetypes from 6 simple stats. Your competency data is richer than that—imagine what it could surface.
 
 ---
 
 ### 2. Game Freak Designs to Stereotypes, Not Gaps
 
-I expected to find "talent gaps": type and role combinations that should exist but don't. Rock-type speedsters. Electric-type tanks. Interesting design spaces left unexplored.
+I expected to find "talent gaps"—type and role combinations that should exist but don't. Rock-type speedsters. Electric-type tanks. Interesting design spaces left unexplored.
 
 After running the analysis, I found 11 apparent gaps. Exciting, right?
 
@@ -77,15 +81,15 @@ What did survive? Five patterns where Game Freak *over*-indexes:
 - Psychic types are almost always special attackers
 - Fairy types are almost always special attackers
 
-Game Freak doesn't fill gaps; they lean into archetypes. Rock means slow and sturdy, Electric means fast. They design to the fantasy, not to balance.
+Game Freak doesn't fill gaps. They lean into archetypes. Rock means slow and sturdy. Electric means fast. They design to the fantasy, not to balance.
 
 ![Heatmap matrix of 18 Pokemon types versus 5 workforce roles. Cells are colored by standardized residuals from red (over-indexed) to blue (under-indexed). Gold borders highlight statistically robust patterns: Rock and Steel types cluster heavily in Defensive Anchor, Electric in Swift Striker, and Psychic and Fairy in Technical Specialist.](/images/pokemon/synthesis_type_role_heatmap.png)
 
-**The HR insight**: Organizations do this constantly, usually without realizing it. Finance hires analytical introverts. Sales hires charismatic extroverts. Engineering hires people who "look like engineers." These patterns feel natural because they match our mental models of what those roles should be.
+**The HR insight**: Organizations do this constantly, and usually without realizing it. Finance hires analytical introverts. Sales hires charismatic extroverts. These patterns feel natural because they match our mental models of what those roles should be.
 
-But mental models aren't strategy. When you cross-tabulate department against competency profile in your own workforce, you'll likely find the same over-indexing I found in Pokemon. Your sales team might be 80% one archetype when optimal performance comes from a 60/40 mix. Your engineering org might lack the communication-heavy profiles that would improve cross-functional collaboration.
+But mental models aren't strategy. When you cross-tabulate department against competency profile in your own workforce, you'll likely find the same over-indexing I found in Pokemon. Your sales team might be 80% one archetype when optimal performance might come from a 60/40 mix. Your engineering org might lack the communication-heavy profiles that would improve cross-functional collaboration.
 
-The fix isn't to eliminate archetypes (some clustering is natural and even useful), but to make it visible. Run the analysis, see where you're over-indexed, and ask whether that's intentional strategy or unconscious pattern-matching. Game Freak designed Rock types to be slow because that serves the fantasy. Most organizations don't have that excuse; they're just hiring on autopilot.
+The fix isn't to eliminate archetypes. Some clustering is natural and even useful. The fix is to make it visible. Run the analysis to see where you're over-indexed, and ask whether that's intentional strategy or unconscious pattern-matching. Game Freak designed Rock types to be slow because that serves the fantasy. Most organizations don't have that excuse. They're just hiring what they *think* they need.
 
 ---
 
@@ -93,13 +97,13 @@ The fix isn't to eliminate archetypes (some clustering is natural and even usefu
 
 Which Pokemon can do the most things? I built a versatility score combining move pool diversity, stat flexibility, and ability options.
 
-Swift Strikers (the fast ones) came out on top. They have the broadest skill sets and dominate the list of "T-shaped talent" (specialists who can also flex into other roles).
+Swift Strikers—the fast ones—came out on top. They have the broadest skill sets and dominate the list of "T-shaped talent" (specialists who can also flex into other roles).
 
 ![Two-panel figure. Left panel: Box plot of Versatility Index by role showing Swift Strikers with the highest median and mean scores. Right panel: Bar chart of T-shaped leaders by role, with Swift Strikers contributing 28 of 50 leaders, followed by Workhorse Executors at 15, Technical Specialists at 6, Defensive Anchors at 1, and Emerging Talent excluded from analysis.](/images/pokemon/synthesis_versatility_role.png)
 
-**The HR insight**: This finding made me think about which roles in an organization tend to develop the most versatile employees. In Pokemon, speed-focused creatures have broader move pools. They're designed to adapt, pivot, and respond quickly. The same pattern likely exists in your workforce.
+**The HR insight**: This finding made me think about which roles in an organization tend to develop the most versatile employees. In Pokemon, speed-focused creatures have broader move pools—they're designed to adapt, pivot, and respond quickly. The same pattern likely exists in your workforce.
 
-Roles that require rapid context-switching (product management, consulting, operations) tend to either attract or develop employees with broader skill sets. They have to learn adjacent domains to do their jobs. Meanwhile, deep specialist roles (your "Technical Specialists" and "Defensive Anchors") build depth at the cost of breadth. Neither is wrong, but they're different development paths.
+Roles that require rapid context-switching like product management, consulting, operations, even analytics - tend to either attract or develop employees with broader skill sets. They have to learn a wide variety of skills to successfully do their jobs. Meanwhile, deep specialist roles (your "Technical Specialists" and "Defensive Anchors") build depth at the cost of breadth. Neither is wrong, but they're very different development paths.
 
 If you're designing rotation programs or identifying future leaders, look at where your most versatile employees came from. My guess: it's not your most specialized functions. It's the roles that forced them to move fast and touch everything. The Swift Strikers of your org chart.
 
@@ -107,19 +111,21 @@ If you're designing rotation programs or identifying future leaders, look at whe
 
 ### 4. High Performers Have Depth AND Breadth
 
-Using competitive usage data from Smogon (where serious Pokemon players track what's actually good), I built a talent grid mapping performance against flexibility.
+Using competitive usage data from Smogon (where uber-competitive Pokemon players track what's actually good), I built a talent grid mapping performance against flexibility.
 
-The top performers weren't pure specialists or pure generalists. They had both: deep expertise in their role, plus enough versatility to adapt. Dragonite, Zapdos, Clefable, Tyranitar: all of them score high on role fit *and* high on cross-functional capability.
+The top performers weren't pure specialists or pure generalists. They were both—deep expertise in their role, plus enough versatility to adapt.
+
+Dragonite, Zapdos, Clefable, Tyranitar. All of them score high on role fit *and* high on cross-functional capability.
 
 ![Scatter plot of 1,025 Pokemon on a 9-box grid with Performance Score on the y-axis and Flexibility Score on the x-axis. Points are colored by workforce role. Quadrant labels identify Star Performers (upper-right, high on both), Consistent Performers (upper-left, high performance but lower flexibility), Hidden Gems (lower-right, high flexibility but underutilized), and Under Performers (lower-left). Star Performers cluster in the upper-right corner with a mix of all archetypes.](/images/pokemon/synthesis_nine_box.png)
 
-**The HR insight**: The "T-shaped professional" concept has been around for decades, but I've rarely seen organizations actually measure for it. They measure depth (technical assessments, certifications, years of experience) or breadth (number of projects, cross-functional exposure) but rarely both together.
+**The HR insight**: The "T-shaped professional" is a common framework used in the workforce. Organizations today hire for and measure depth (technical assessments, certifications, years of experience) or breadth (number of projects, cross-functional exposure) but rarely both together.
 
-The Pokemon data made this concrete. When I plotted performance against flexibility, the star performers weren't clustered at the extremes. They sat in the quadrant that required both: high role fit (they're excellent at their specific job) plus high versatility (they can adapt when conditions change). Dragonite isn't just powerful; it's powerful *and* flexible. That combination is rare and valuable.
+The Pokemon data made this concrete. When I plotted performance against flexibility, the star performers weren't clustered at the extremes. They sat in the quadrant that required both: high role fit (they're excellent at their specific job) plus high versatility (they can adapt when conditions change). Dragonite isn't just powerful—it's powerful *and* flexible. That combination is rare and valuable.
 
-In talent reviews, this means asking two questions instead of one. Not just "how good are they at their current role?" but also "how well could they adapt if that role changed?" The pure specialist who can't flex is a single point of failure, while the pure generalist who hasn't mastered anything is a permanent floater. The T-shaped employee who has both? That's your bench strength.
+In talent reviews, this means asking two questions instead of one. Not just "how good are they at their current role?" but also "how well could they adapt if that role changed?" The pure specialist who can't flex is a single point of failure. The pure generalist who hasn't mastered anything is a permanent floater. The T-shaped employee who has both? That's your bench strength.
 
-Build your 9-box grids to capture this: performance on one axis, flexibility on the other. Your high-potential population might look different than you expected.
+Build your 9-box grids to capture this. Performance on one axis, flexibility on the other. Your high-potential population might look different than you expected.
 
 ---
 
@@ -127,33 +133,33 @@ Build your 9-box grids to capture this: performance on one axis, flexibility on 
 
 Here's where I have to be honest.
 
-My first network analysis identified Magikarp as the most "central" Pokemon, the one that bridges the most connections across the game world. This seemed like a fascinating discovery: the weakest, most mocked Pokemon is secretly the most important connector?
+My first network analysis identified Magikarp as the most "central" Pokemon, the one that bridges the most connections across the game world. This seemed like a fascinating discovery. The weakest, most mocked Pokemon is secretly the most important connector?
 
-It was wrong. Magikarp appeared central because it shows up everywhere. It's in almost 200 locations, intentionally designed as the most common Pokemon in the games. My "centrality" metric was really just measuring "how often does this thing appear?"
+It was wrong.
+
+Magikarp appeared central because it shows up everywhere. It's in almost 200 locations, intentionally designed as the most common Pokemon in the games. My "centrality" metric was really just measuring "how often does this thing appear?"
 
 Once I controlled for location count, the actual interesting connector emerged: Audino. It appears in a moderate number of places but uniquely bridges two otherwise disconnected game regions.
 
 ![Four-panel figure showing the Magikarp centrality correction. Top-left: Scatter plot revealing location count dominates raw betweenness centrality (ρ = 0.82), with Magikarp as a high outlier due to appearing in 198 locations. Top-right: Bar chart of residual betweenness showing Audino as the most unexpectedly central Pokemon after controlling for location count. Bottom-left: Most efficient bridges ranked by centrality per location. Bottom-right: Histogram of cross-regional experience showing 310 Pokemon appear in 3 or more game regions.](/images/pokemon/network_residual_centrality.png)
 
-**The HR insight**: This is maybe the most important lesson, because it's the easiest mistake to make. Network analysis has become popular in people analytics, mapping who collaborates with whom, who's central to information flow, who bridges different teams. The metrics sound sophisticated: betweenness centrality, eigenvector centrality, clustering coefficients.
+**The HR insight**: This is maybe the most important lesson, because it's the easiest mistake to make. Network analysis has become aspirational in people analytics, mapping who collaborates with whom, who's central to information flow, who bridges different teams.
 
-But raw network metrics are dangerously easy to misinterpret. In my analysis, "centrality" was really just "shows up a lot." In your organization, the employee with the highest betweenness centrality might not be your most important connector. They might just be your longest-tenured employee who's touched the most projects over time, or someone who sits on a lot of email threads without adding value. The metric can't tell the difference.
+But raw network metrics are dangerously easy to misinterpret. In my analysis, "centrality" was really just "shows up a lot." In your organization, the employee with highest betweenness centrality might not be your most important connector. They might just be your longest-tenured employee who's touched the most projects over time. Or they might sit on a lot of email threads without adding value. The metric can't tell the difference.
 
 Before you identify "key connectors" or "flight risks" based on network position, ask what's confounding the measurement. Tenure? Role scope? Meeting culture? I had to residualize my centrality scores against location count to find the actually interesting connectors. You might need to control for tenure, level, or function to find yours.
-
-The Magikarp mistake taught me something I should have known: any metric that correlates 0.79 with a simpler count isn't measuring what you think it's measuring. It's just a fancy way of counting.
 
 ---
 
 ## Wrapping Up
 
-What surprised me most about this project wasn't any single finding, but how well the frameworks transferred.
+What surprised me most about this project wasn't any single finding, it was how well the frameworks actually transferred.
 
-Workforce analytics concepts like competency clustering, talent grids, and network centrality weren't designed for fictional creatures with six stats and elemental types. But they worked. They surfaced patterns in 25 years of game design that I hadn't seen articulated elsewhere: the way Game Freak leans into archetypes rather than filling gaps, the connection between speed-focused design and versatility, the T-shaped profile of competitively successful Pokemon.
+Workforce analytics concepts like competency clustering, talent grids, and network analysis weren't designed for fictional creatures with six stats and elemental types. But they worked. They surfaced patterns in 25 years of game design that I haven't seen articulated elsewhere: the way Game Freak leans into archetypes rather than filling gaps, the connection between speed-focused design and versatility, the T-shaped profile of competitively successful Pokemon.
 
-These aren't just cute parallels. They're the same dynamics that play out in real organizations: companies hire to stereotype, fast-paced roles develop flexible employees, high performers combine depth with adaptability, and network metrics get confounded by tenure. The Pokemon data just let me show it in a way that's easy to explore and verify.
+These aren't just cute parallels. They're the same dynamics that play out in real organizations. Companies tend to hire to stereotype. Fast-paced roles develop flexible employees. High performers combine depth with adaptability. Network metrics get confounded by tenure. The Pokemon data just let me show it in a way that's easy to explore and verify.
 
-A year ago, this project would have stayed on my "someday" list. The data pipeline, the clustering, the visualizations: it all felt like too much to take on. But the tools have changed, and so has what's possible for someone willing to learn by building.
+A year ago, this project would have stayed on my "someday" list. The data pipeline, the clustering, the visualizations. It felt like too much to take on. But the tools have changed, and so has what's possible for someone willing to learn by building.
 
 If you work in people analytics, I hope something here sparked an idea. If you're a Pokemon fan, I hope you enjoyed seeing the games through a different lens. And if you're somewhere in between, welcome to the club.
 
